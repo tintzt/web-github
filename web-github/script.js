@@ -23,20 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== DARK MODE =====
-  const themeBtn = document.getElementById("themeBtn");
+  if(localStorage.getItem("theme") === "dark"){
+  document.body.classList.add("dark-mode");
+}
 
-  if (themeBtn) {
-    themeBtn.addEventListener("click", () => {
+themeBtn.addEventListener("click", () => {
 
-      document.body.classList.toggle("dark-mode");
+  document.body.classList.toggle("dark-mode");
 
-      if (document.body.classList.contains("dark-mode")) {
-        themeBtn.innerHTML = '<i class="uil uil-sun"></i>';
-      } else {
-        themeBtn.innerHTML = '<i class="uil uil-moon"></i>';
-      }
+  if(document.body.classList.contains("dark-mode")){
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
 
-    });
+});
   }
 
   console.log("Website Loaded");
